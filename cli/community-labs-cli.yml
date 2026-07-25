@@ -1,0 +1,85 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/t8/hypura#readme + https://github.com/t8/autolab#readme
+notes: >-
+  Community Labs ships two first-party command-line tools. Both are the primary
+  interface to their respective projects; neither has a hosted service. Command
+  surfaces below are transcribed verbatim from the published READMEs.
+clis:
+- name: hypura
+  language: rust
+  repository: https://github.com/t8/hypura
+  description: Storage-tier-aware LLM inference scheduler for Apple Silicon. Places
+    model tensors across GPU (Metal), RAM and NVMe tiers so GGUF models larger than
+    physical memory run without OOM.
+  install:
+  - method: source
+    command: git clone --recurse-submodules https://github.com/t8/hypura.git && cd hypura && cargo build --release
+    binary: target/release/hypura
+    requires: Rust 1.75+, CMake
+  - method: homebrew
+    status: announced
+    note: README states "Homebrew tap coming soon" — not yet available
+  commands:
+  - command: hypura profile
+    description: Profile host hardware (GPU working set, RAM, NVMe bandwidth). Runs
+      once and caches the profile.
+  - command: hypura run <model.gguf> --prompt "<text>"
+    description: Run a single inference against a GGUF model.
+  - command: hypura run <model.gguf> --interactive
+    description: Interactive chat session.
+  - command: hypura bench <model.gguf>
+    description: Benchmark Hypura tier-aware scheduling against a naive baseline.
+  - command: hypura inspect <model.gguf>
+    description: Inspect the computed tensor placement plan without loading the model.
+  - command: hypura serve <model.gguf>
+    description: Start the local Ollama-compatible HTTP server on http://127.0.0.1:8080.
+  flags:
+  - flag: --prompt
+    description: Prompt text for a single completion
+  - flag: --interactive
+    description: Interactive chat mode
+  - flag: --max-tokens
+    description: Cap generated tokens. README advises `--max-tokens 10` on untested models.
+  key_flows:
+  - name: Serve as an Ollama drop-in
+    steps:
+    - hypura profile
+    - hypura inspect ./model.gguf
+    - hypura serve ./model.gguf
+    - Point any Ollama client at http://127.0.0.1:8080
+- name: autolab
+  language: python
+  repository: https://github.com/t8/autolab
+  license: Apache-2.0
+  description: Autonomous research orchestration framework. Given a research goal it
+    designs experiment campaigns, runs them, analyzes results and documents
+    discoveries. Extends the autoresearch paradigm to multi-question research programs.
+  install:
+  - method: pip
+    command: pip install autolab
+    status: unverified
+    note: >-
+      The README publishes this command, but the PyPI name `autolab` currently
+      resolves to an unrelated GPL-3.0 project (autolab-project, scientific
+      instrument automation). Treat the install as source-only until Community
+      Labs claims a distinct distribution name.
+  commands:
+  - command: autolab init "<research directive>"
+    description: Initialize a research project from a natural-language directive.
+  - command: autolab run campaigns/<name>.yaml
+    description: Execute a campaign defined as a YAML parameter grid.
+  - command: autolab status
+    description: Report progress of the current research program.
+  - command: autolab results --metric <name> --top <n>
+    description: Query the SQLite results database, ranked by a metric.
+  - command: autolab loop --backend anthropic --max-iterations <n>
+    description: Start the autonomous research loop. Requires ANTHROPIC_API_KEY.
+  environment:
+  - name: ANTHROPIC_API_KEY
+    description: Model backend credential required by `autolab loop`
+  execution_backends:
+  - local
+  - ssh
+  - docker
+  - slurm

@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/t8/hypura/releases
+notes: >-
+  Community Labs publishes no company-wide changelog. The dated release stream
+  for Hypura — the project carrying the API surface — is the changelog of
+  record. t8/autolab has no tagged releases as of this pass.
+scheme: semver
+channel: github-releases
+url: https://github.com/t8/hypura/releases
+project: hypura
+current_version: v0.2.0
+entries:
+- version: v0.2.0
+  date: '2026-04-08'
+  title: Gemma 4, Sparse MoE mmap, M5 Pro support
+  url: https://github.com/t8/hypura/releases/tag/v0.2.0
+  breaking: false
+  additions:
+  - Google Gemma 4 26B-A4B sparse MoE architecture support (128 experts, 8 active),
+    running end-to-end at 51 tok/s on an M1 Max 32 GB
+  - New SparseMoeMmap placement mode for MoE models with <=15% activation ratio,
+    bypassing router interception and letting the OS page cache handle sparsity
+  - CPU-only baseline fallback (n_gpu_layers=0) when a model exceeds Metal's
+    working-set limit, instead of crashing
+  - M5 / M5 Pro / M5 Max Apple Silicon profiling support
+  - Chart generation via benchmarks/gen_charts.sh
+  highlights:
+  - vendor/llama.cpp bumped to 66c4f9ded for upstream gemma4 support
+  - ExpertTensorType::GateUp variant for gemma4's fused ffn_gate_up_exps tensor
+  - Array-valued attention.head_count_kv parsing for per-layer KV head counts
+  - Fixed an M5 Pro placement mis-classification regression
+- version: v0.1.0
+  date: '2026-03-17'
+  title: Storage-Tier-Aware LLM Inference
+  url: https://github.com/t8/hypura/releases/tag/v0.1.0
+  breaking: false
+  additions:
+  - Initial release — tensor placement across GPU (Metal), RAM and NVMe tiers
+  - Automatic hardware profiling (GPU, RAM, NVMe bandwidth), cached 30 days
+  - LP + greedy tensor placement solver
+  - Expert-streaming mode for MoE models with a 99.5% neuron cache hit rate
+  - Dense FFN-streaming mode keeping attention on Metal
+  - Dynamic pool sizing and prefetch depth
+  - Co-activation tracking persisted to disk for speculative prefetch
+  highlights:
+  - Mixtral 8x7B Q5_K_M (30.9 GB) at 2.2 tok/s where llama.cpp OOMs
+  - Llama 3.3 70B Q4_K_M (39.6 GB) at 0.3 tok/s where llama.cpp OOMs

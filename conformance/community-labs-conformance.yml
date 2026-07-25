@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/t8/hypura#ollama-compatible-server
+notes: >-
+  Community Labs publishes no compliance program (no SOC 2 / ISO 27001 / PCI /
+  HIPAA / FedRAMP claim was found; the security-programs probe returned no trust
+  center and no vulnerability-disclosure surface). No `Compliance` pointer is
+  wired. The one standard the company explicitly conforms to is the Ollama HTTP
+  API, which Hypura implements as a drop-in replacement.
+standards:
+- id: ollama-http-api
+  conforms: true
+  evidence: >-
+    README: "Hypura exposes an Ollama-compatible HTTP API, making it a drop-in
+    replacement for any tool that talks to Ollama." Implements GET /,
+    GET /api/tags, GET /api/version, POST /api/show, POST /api/generate,
+    POST /api/chat.
+  docs: https://github.com/t8/hypura#endpoints
+- id: gguf
+  conforms: true
+  evidence: Hypura reads GGUF model files directly and builds on vendored llama.cpp
+- id: ndjson-streaming
+  conforms: true
+  evidence: /api/generate and /api/chat return streaming NDJSON or a single response
+- id: oauth2
+  conforms: false
+  evidence: no authentication surface — Hypura serves on loopback with no auth scheme
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: error envelope follows the Ollama API shape, not RFC 9457
+- id: openapi
+  conforms: false
+  evidence: endpoint surface is documented in the README as a table; no OpenAPI
+    description is published
+- id: soc2
+  conforms: false
+  evidence: no published compliance program found
+- id: iso-27001
+  conforms: false
+  evidence: no published compliance program found

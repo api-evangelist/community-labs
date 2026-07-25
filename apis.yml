@@ -1,8 +1,28 @@
 aid: community-labs
 name: Community Labs
-description: Community Labs is a company surfaced as a portfolio company of lightspeed-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: 'Community Labs is an independent research organization founded in 2022
+  by Tate Berenbaum, oriented toward a single belief: access to the future of intelligence
+  should not be gate kept by the hardware people can afford. The company raised a $30M
+  seed round led by Lightspeed Venture Partners, originally operating as a native software
+  development company and venture studio accelerating developer tools and adoption of
+  the Arweave permaweb, and has since refocused on local and consumer-hardware AI
+  inference research. Its open source surface spans Hypura, a storage-tier-aware LLM
+  inference scheduler for Apple Silicon that exposes an Ollama-compatible HTTP API,
+  Autolab, an autonomous research orchestration framework, and the labscommunity
+  GitHub organization of Arweave developer libraries including ArweaveKit, Arweave
+  Wallet Kit, and the Arweave Storage SDK.'
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://www.communitylabs.com/assets/Favicon.png
 url: https://raw.githubusercontent.com/api-evangelist/community-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,12 +30,74 @@ x-backed-by:
 - lightspeed-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Artificial Intelligence
+- Machine Learning
+- LLM Inference
+- Developer Tools
+- Open Source
+- Blockchain
+- Arweave
+- Research
+- Apple Silicon
+apis:
+- aid: community-labs:hypura
+  name: Hypura Ollama-Compatible Inference API
+  description: Hypura is a storage-tier-aware LLM inference scheduler for Apple Silicon
+    that places model tensors across GPU, RAM, and NVMe tiers so models larger than
+    physical memory can run. Running `hypura serve <model.gguf>` exposes a local
+    Ollama-compatible HTTP API, making it a drop-in replacement for tooling that
+    talks to Ollama. The server is local-first; there is no hosted endpoint.
+  humanURL: https://github.com/t8/hypura
+  baseURL: http://127.0.0.1:8080
+  tags:
+  - LLM Inference
+  - Local AI
+  - Ollama Compatible
+  - Apple Silicon
+  properties:
+  - type: SourceCode
+    url: https://github.com/t8/hypura
+  - type: Documentation
+    url: https://github.com/t8/hypura#readme
+  - type: APIReference
+    url: https://github.com/t8/hypura#endpoints
+  - type: GettingStarted
+    url: https://github.com/t8/hypura#quick-start
+  - type: Conformance
+    url: conformance/community-labs-conformance.yml
+common:
+- type: DomainSecurity
+  url: security/community-labs-domain-security.yml
+- type: Website
+  url: https://www.communitylabs.com/
+- type: GitHubOrganization
+  url: https://github.com/labscommunity
+- type: X
+  url: https://x.com/CommunityLabs
+- type: LinkedIn
+  url: https://www.linkedin.com/company/communitylabs1
+- type: Packages
+  url: packages/community-labs-packages.yml
+- type: SDKs
+  url: packages/community-labs-packages.yml
+- type: CLI
+  url: cli/community-labs-cli.yml
+- type: ChangeLog
+  url: changelog/community-labs-changelog.yml
+- type: Conformance
+  url: conformance/community-labs-conformance.yml
+- type: LLMsTxt
+  url: llms/community-labs-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

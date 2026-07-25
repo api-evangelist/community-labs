@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: live HTTP probe
+host: https://www.communitylabs.com
+notes: >-
+  Community Labs publishes no /.well-known/ discovery surface. Every probed
+  path returned 404. This is a recorded negative result, not a gap in the
+  probe — no WellKnown or SecurityTxt pointer is wired into apis.yml because
+  no document exists. The company's primary API surface (Hypura) is a
+  local-first server distributed as a binary, so it has no public origin to
+  host a well-known catalog.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404

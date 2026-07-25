@@ -1,0 +1,75 @@
+generated: '2026-07-20'
+method: searched
+source: https://registry.npmjs.org/ + https://github.com/labscommunity
+notes: >-
+  Community Labs publishes its client libraries to npm under the labscommunity
+  GitHub organization. Registry probes for PyPI, crates.io, Maven Central,
+  NuGet, pkg.go.dev, RubyGems and Packagist returned no first-party Community
+  Labs package. Note the PyPI name `autolab` (referenced by the t8/autolab
+  README quickstart) resolves to an UNRELATED GPL-3.0 project published by
+  autolab-project (scientific instrument automation) — it is not Community
+  Labs software and is recorded here as a name collision, not a package.
+packages:
+- language: javascript
+  registry: npm
+  name: arweavekit
+  version: 1.5.1
+  url: https://www.npmjs.com/package/arweavekit
+  install: npm install arweavekit
+  repository: https://github.com/labscommunity/arweavekit
+  description: Utility library to build full stack permaweb applications
+  official: true
+  evidence: npm `repository` field points at github.com/labscommunity/arweavekit
+- language: javascript
+  registry: npm
+  name: arweave-wallet-kit
+  version: 1.1.0
+  url: https://www.npmjs.com/package/arweave-wallet-kit
+  install: npm install arweave-wallet-kit
+  repository: https://github.com/labscommunity/arweave-wallet-kit
+  description: React Hooks and Components for better interaction with Arweave wallets
+  official: true
+  evidence: source repo published in the labscommunity GitHub organization
+- language: javascript
+  registry: npm
+  name: '@arweave-wallet-kit/react'
+  version: 0.3.2
+  url: https://www.npmjs.com/package/@arweave-wallet-kit/react
+  install: npm install @arweave-wallet-kit/react
+  repository: https://github.com/labscommunity/arweave-wallet-kit-monorepo
+  description: React Hooks and Components for better interaction with Arweave wallets
+  official: true
+  evidence: scoped package of the labscommunity arweave-wallet-kit monorepo
+- language: javascript
+  registry: npm
+  name: arweave-storage-sdk
+  version: 1.4.6
+  url: https://www.npmjs.com/package/arweave-storage-sdk
+  install: npm install arweave-storage-sdk
+  repository: https://github.com/labscommunity/arweave-storage-sdk
+  description: ArFS based File System for web/backend; upload to Arweave and pay
+    using EVM/Solana/Cosmos stablecoins
+  official: true
+  evidence: source repo published in the labscommunity GitHub organization
+- language: javascript
+  registry: npm
+  name: ao-tokens
+  version: 0.0.6
+  url: https://www.npmjs.com/package/ao-tokens
+  install: npm install ao-tokens
+  repository: https://github.com/martonlederer/ao-tokens
+  description: Utility library to handle tokens and token quantities off chain
+  official: false
+  evidence: mirrored in the labscommunity org but the npm `repository` points at
+    an upstream personal repo — upstream ownership not clearly first-party
+source_builds:
+- language: rust
+  registry: none
+  name: hypura
+  url: https://github.com/t8/hypura
+  install: git clone --recurse-submodules https://github.com/t8/hypura.git && cargo build --release
+  description: Storage-tier-aware LLM inference scheduler for Apple Silicon. Not
+    published to crates.io (probe returned "crate `hypura` does not exist");
+    README states "Homebrew tap coming soon".
+  official: true
+  requires: Rust 1.75+, CMake (vendored llama.cpp)
