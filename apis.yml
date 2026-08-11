@@ -76,6 +76,10 @@ apis:
   - type: Conformance
     url: conformance/community-labs-conformance.yml
 common:
+- type: IssueTracker
+  url: https://github.com/t8/hypura/issues
+- type: Releases
+  url: https://github.com/t8/hypura/releases
 - type: DomainSecurity
   url: security/community-labs-domain-security.yml
 - type: Website
