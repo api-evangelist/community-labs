@@ -11,6 +11,17 @@ description: 'Community Labs is an independent research organization founded in 
   Autolab, an autonomous research orchestration framework, and the labscommunity
   GitHub organization of Arweave developer libraries including ArweaveKit, Arweave
   Wallet Kit, and the Arweave Storage SDK.'
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
