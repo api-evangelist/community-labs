@@ -12,15 +12,18 @@ description: 'Community Labs is an independent research organization founded in 
   GitHub organization of Arweave developer libraries including ArweaveKit, Arweave
   Wallet Kit, and the Arweave Storage SDK.'
 deliveryModel:
-  model: unknown
+  model: library
+  license_evidence:
+    not_product:
+    - t8/hypura
   open_source: unknown
   commercial: false
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Library · distributed through package registries, no callable service
   confidence: low
   source:
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -52,10 +55,10 @@ modified: '2026-07-20'
 tags:
 - Company
 - Artificial Intelligence
-- Machine-Learning
-- LLM Inference
+- Machine Learning
+- Inference
 - Developer Tools
-- Open-Source
+- Open Source
 - Blockchain
 - Arweave
 - Research
@@ -71,6 +74,8 @@ tags_raw:
 - Arweave
 - Research
 - Apple Silicon
+- Machine-Learning
+- Open-Source
 apis:
 - aid: community-labs:hypura
   name: Hypura Ollama-Compatible Inference API
@@ -82,6 +87,11 @@ apis:
   humanURL: https://github.com/t8/hypura
   baseURL: http://127.0.0.1:8080
   tags:
+  - Inference
+  - Local AI
+  - Ollama Compatible
+  - Apple Silicon
+  tags_raw:
   - LLM Inference
   - Local AI
   - Ollama Compatible
